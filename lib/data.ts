@@ -32,6 +32,19 @@ export async function getPublishedProjects(): Promise<Project[]> {
   }
 }
 
+export async function getAllProjectsAdmin(): Promise<Project[]> {
+  const supabase = await createClient();
+  const { data, error } = await supabase
+    .from("projects")
+    .select("*")
+    .order("sort_order", { ascending: true });
+
+  if (error) {
+    console.error("getAllProjectsAdmin:", error.message);
+    return [];
+  }
+  return data ?? [];
+}
 export async function getProjectBySlug(slug: string): Promise<Project | null> {
   if (!supabaseConfigured()) return null;
 
