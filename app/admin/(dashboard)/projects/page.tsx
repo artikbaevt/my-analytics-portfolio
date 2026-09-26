@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { getAllProjectsAdmin } from "@/lib/data";
+import { DeleteProjectButton } from "@/components/admin/delete-project-button";
 
 export default async function AdminProjectsPage() {
   const projects = await getAllProjectsAdmin();
@@ -36,13 +37,14 @@ export default async function AdminProjectsPage() {
                 >
                   {p.status}
                 </span>
-                {/* Edit/Delete — следующий шаг, эта страница пока только читает (Read из CRUD) */}
+                {/* Edit/Delete — теперь оба реально работают (Update и Delete из CRUD) */}
                 <Link
                   href={`/admin/projects/${p.id}/edit`}
                   className="text-xs text-primary hover:underline"
                 >
                   Edit
                 </Link>
+                <DeleteProjectButton id={p.id} title={p.title_en || p.title_ru} />
               </div>
             </div>
           ))}

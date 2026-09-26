@@ -45,6 +45,13 @@ export async function getAllProjectsAdmin(): Promise<Project[]> {
   }
   return data ?? [];
 }
+export async function getProjectById(id: string): Promise<Project | null> {
+  const supabase = await createClient();
+  const { data, error } = await supabase.from("projects").select("*").eq("id", id).single();
+  if (error) return null;
+  return data;
+}
+
 export async function getProjectBySlug(slug: string): Promise<Project | null> {
   if (!supabaseConfigured()) return null;
 
