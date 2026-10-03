@@ -1,0 +1,2 @@
+# Data model
+All translatable text is JSON with `en`, `ru`, and `uz` keys; the UI falls back to English. `projects` contains title, summary, problem, approach, tools array, domain, featured/published flags, order, impact, metrics, gallery, embeds, links, and `chart_data`. `skills`, `experience`, `certificates`, `education`, `testimonials`, and `blog` each have a published flag and order. `profile` contains identity, bio, contacts, counters and CV. `site_settings` holds theme, language, section visibility, SEO, analytics and embed allowlist. `messages` is public insert-only.
